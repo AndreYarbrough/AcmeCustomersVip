@@ -2,7 +2,18 @@
     <head>
         <body>
             <style>
+                #vip{
+                    background-color: blue;
+                }
+                h1{
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: row;      
+             
+                }
             </style>
+            <h1>Acme Customers </h1>
+            <h1 id='vip'>VIP</h1>
             <script>
                  let customers = [
       { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
@@ -11,8 +22,8 @@
      ];
      const render = () =>{
          const html = customers.map((employee, idx)=>{
-             return `<li data-idx='${idx}'`
-         })
+             return `<li data-idx='${idx}'>${employee.name}`
+         }).join('');
      };
             </script>
         </body>
