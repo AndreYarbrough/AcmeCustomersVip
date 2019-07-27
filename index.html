@@ -17,8 +17,10 @@
                     /*flex-wrap: wrap;*/
                     flex-direction: row;
                 }
-                #form{
-                    border: 2px;
+                div > #form{
+                    border-radius: 10px;
+                    border-color: black;
+                    padding: 10px;
                 }
 
             </style>
@@ -29,7 +31,6 @@
             <div id='form'>
             <form action="">
                 <h2>Customer Input Form</h2>
-
                 <form action="/action_page.php">
                   Name:<br>
                   <input type="text" name="firstname" value="">
@@ -40,7 +41,8 @@
                   <input type ="checkbox" value = "">
                   <input type="submit" value="Create">
                 </form>
-            </div>
+                </div>
+
             <script>
                  let customers = [
       { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
