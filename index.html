@@ -4,6 +4,16 @@
             <style>
             </style>
             <script>
+                 let customers = [
+      { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
+      { id: 2, name: 'larry', isVIP: true, email: 'larry@gmail.com'},
+      { id: 4, name: 'shep', email: 'shep@gmail.com'},
+     ];
+     const render = () =>{
+         const html = customers.map((employee, idx)=>{
+             return `<li data-idx='${idx}'`
+         })
+     };
             </script>
         </body>
     </head>
