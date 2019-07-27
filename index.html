@@ -12,7 +12,7 @@
                     flex-direction: row;
 
                 }
-                div{
+                #formHeader{
                     display: flex;
                     /*flex-wrap: wrap;*/
                     flex-direction: row;
@@ -24,9 +24,27 @@
                     padding: 10px;
                     width: 100%;
                 }
+                #list> div{
+                display: flex;    
+                flex-direction: row;
+                padding: 1rem;
+                border-radius: 0.5rem
+                }
+                #status{
+                    background-color: black;
+                    padding: 1rem;
+                    color: white;
+                    border-radius: 0.5rem
+                    
+                }
+                .vip{
+                    background-color: blueviolet;
+                    color: white;
+                    
+                }
 
             </style>
-            <div>
+            <div id="formHeader">
             <h1>Acme Customers </h1>
             <h1 id='vip' ><font color="white">VIP</font></h1>
             </div>
@@ -45,21 +63,24 @@
                   <input type="submit" value="Create">
                 </form>
                 </div>
-                <div id="customerContainer">
-                
-                </div>
+                <div id="status"></div>
+                <div id=list></div>
 
             <script>
-            let li = document.querySelector('LI');
+            const status=document.querySelector('#status');
+            const list = document.querySelector('#list');
+
                  const customers = [
       { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
       { id: 2, name: 'larry', isVIP: true, email: 'larry@gmail.com'},
       { id: 4, name: 'shep', email: 'shep@gmail.com'},
      ];
      const render = () =>{
-         const cust = customers.map((customer, idx)=>{
-             `<li data-idx='${idx}'>${customer.name}</li>`
-         }).join('');
+         const stats = customers.filter(customer => {return (customer.isVIP)});
+         status.innerHTML=`<h3><font color="white">${stats.length} VIPS</font></h3>`;
+         const html = customers.map(customer =>{return`<div class="customer${customer.isVIP ? ' vip':''}"><h3>${customer.name}  ${customer.email}</h3><button data-id=${customer.id}>Delete</button></div>`}).join('');
+        
+        list.innerHTML=html;
      };
      render();
             </script>
