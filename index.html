@@ -3,17 +3,34 @@
         <body>
             <style>
                 #vip{
-                    background-color: blue;
+                    background-color: blue;              
+
                 }
                 h1{
                     display: flex;
-                    flex-wrap: wrap;
+                    /*flex-wrap: wrap;*/
                     flex-direction: row;      
              
                 }
+                div{
+                    display: flex;
+                    /*flex-wrap: wrap;*/
+                    flex-direction: row; 
+                }
+                #form{
+                    border: 2px;
+                }
+                
             </style>
+            <div>
             <h1>Acme Customers </h1>
-            <h1 id='vip'>VIP</h1>
+            <h1 id='vip' ><font color="white">VIP</font></h1>
+            </div>
+            <div id='form'>
+            <form action="">
+
+            </form>
+            </div> 
             <script>
                  let customers = [
       { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
