@@ -16,11 +16,13 @@
                     display: flex;
                     /*flex-wrap: wrap;*/
                     flex-direction: row;
+                    width: 100%;
                 }
-                div > #form{
+                #form{
                     border-radius: 10px;
                     border-color: black;
                     padding: 10px;
+                    width: 100%;
                 }
 
             </style>
@@ -32,28 +34,31 @@
             <form action="">
                 <h2>Customer Input Form</h2>
                 <form action="/action_page.php">
-                  Name:<br>
+                  <p>  
+                  <lable>Name:</lable>
                   <input type="text" name="firstname" value="">
-                  <br>
-                  Email:<br>
+                  </p>
+                  Email:
                   <input type="text" name="email" value="">
-                  <br>IsVIP<br>
-                  <input type ="checkbox" value = "">
+                  <br>IsVIP
+                  <input type ="checkbox" value = ""><br>
                   <input type="submit" value="Create">
                 </form>
                 </div>
 
             <script>
-                 let customers = [
+            let li = document.querySelector('LI');
+                 const customers = [
       { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
       { id: 2, name: 'larry', isVIP: true, email: 'larry@gmail.com'},
       { id: 4, name: 'shep', email: 'shep@gmail.com'},
      ];
      const render = () =>{
-         const html = customers.map((employee, idx)=>{
-             return `<li data-idx='${idx}'>${employee.name}`
+         const html = customers.map((customer, idx)=>{
+             return `<li data-idx='${idx}'>${customer.name}</li>`
          }).join('');
      };
+     render();
             </script>
         </body>
     </head>
