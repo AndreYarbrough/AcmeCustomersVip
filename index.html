@@ -3,24 +3,24 @@
         <body>
             <style>
                 #vip{
-                    background-color: blue;              
+                    background-color: blue;
 
                 }
                 h1{
                     display: flex;
                     /*flex-wrap: wrap;*/
-                    flex-direction: row;      
-             
+                    flex-direction: row;
+
                 }
                 div{
                     display: flex;
                     /*flex-wrap: wrap;*/
-                    flex-direction: row; 
+                    flex-direction: row;
                 }
                 #form{
                     border: 2px;
                 }
-                
+
             </style>
             <div>
             <h1>Acme Customers </h1>
@@ -28,9 +28,18 @@
             </div>
             <div id='form'>
             <form action="">
+                <h2>HTML Forms</h2>
 
-            </form>
-            </div> 
+                <form action="/action_page.php">
+                  First name:<br>
+                  <input type="text" name="firstname" value="">
+                  <br>
+                  Email:<br>
+                  <input type="text" name="email" value="">
+                  <br><br>
+                  <input type="submit" value="Create">
+                </form>
+            </div>
             <script>
                  let customers = [
       { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
