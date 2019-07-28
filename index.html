@@ -8,17 +8,15 @@
                 }
                 h1{
                     display: flex;
-                    /*flex-wrap: wrap;*/
                     flex-direction: row;
 
                 }
                 #formHeader{
                     display: flex;
-                    /*flex-wrap: wrap;*/
                     flex-direction: row;
                     width: 100%;
                 }
-                #form{
+                #customerForm{
                     border-radius: 10px;
                     border-color: black;
                     padding: 10px;
@@ -28,13 +26,13 @@
                 display: flex;    
                 flex-direction: row;
                 padding: 1rem;
-                border-radius: 0.5rem
+                margin: 1rem 0;
                 }
                 #status{
                     background-color: black;
                     padding: 1rem;
                     color: white;
-                    border-radius: 0.5rem
+                    border-radius: 0.5rem;
                     
                 }
                 .vip{
@@ -48,33 +46,56 @@
             <h1>Acme Customers </h1>
             <h1 id='vip' ><font color="white">VIP</font></h1>
             </div>
-            <div id='form'>
-            <form action="">
+            <div id='customerForm'>
+            <form >
                 <h2>Customer Input Form</h2>
-                <form action="/action_page.php">
-                  <p>  
-                  <lable>Name:</lable>
-                  <input type="text" name="firstname" value="">
-                  </p>
-                  Email:
-                  <input type="text" name="email" value="">
-                  <br>IsVIP
-                  <input type ="checkbox" value = ""><br>
-                  <input type="submit" value="Create">
-                </form>
+                  <lable for="name">Name:</lable>
+                  <input name="name" id="name" value>
+                  <label for="email">Email</label>
+                  <input name="email" id="email" value>
+                  <label for="isVIP">IsVIP</label>
+                  <input type ="checkbox" id="isVIP" name="isVIP">
+                  <input type="submit" value="Create" id="submit">
+            </form>
                 </div>
                 <div id="status"></div>
                 <div id=list></div>
 
             <script>
+            const isVIPInput=document.querySelector('[name="isVIP"]');
+            const nameInput=document.querySelector('[name="name"]');
+            const emailInput=document.querySelector('[name="email"]');
+            const createButtone=document.querySelector('#createButton')
             const status=document.querySelector('#status');
             const list = document.querySelector('#list');
+            
 
-                 const customers = [
+                 let customers = [
       { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
       { id: 2, name: 'larry', isVIP: true, email: 'larry@gmail.com'},
       { id: 4, name: 'shep', email: 'shep@gmail.com'},
      ];
+     customerForm.addEventListener('submit',(ev)=>{
+         ev.preventDefault();
+         customers.push({
+             name:nameInput.value,
+             email:emailInput.value,
+             isVIP:isVIPInput.checked,
+             id:Math.random()
+             });
+             nameInput.value='';
+             emailInput.value='';
+             isVIPInput.checked=false;
+             render()
+     });
+    list.addEventListener('click',(ev)=>{
+        const id = ev.target.getAttribute('data-id');
+        if(!id){
+            return;
+        }
+        customers=customers.filter(customer => customer.id!==id*1);
+        render()
+    })
      const render = () =>{
          const stats = customers.filter(customer => {return (customer.isVIP)});
          status.innerHTML=`<h3><font color="white">${stats.length} VIPS</font></h3>`;
